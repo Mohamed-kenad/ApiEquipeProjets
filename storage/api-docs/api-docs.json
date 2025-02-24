@@ -1,0 +1,204 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "API de gestion des personnes",
+        "description": "Documentation de l'API pour gérer les personnes",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/personnes": {
+            "get": {
+                "tags": [
+                    "Personnes"
+                ],
+                "summary": "Récupérer toutes les personnes",
+                "operationId": "a98e7cdd225a906ffd217cba4430558b",
+                "responses": {
+                    "200": {
+                        "description": "Liste des personnes",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Personne"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Personnes"
+                ],
+                "summary": "Créer une nouvelle personne",
+                "operationId": "37c59a8f658db88ec1950a749bfb83a6",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Personne"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Personne créée avec succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Personne"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/personnes/{id}": {
+            "get": {
+                "tags": [
+                    "Personnes"
+                ],
+                "summary": "Récupérer une personne par ID",
+                "operationId": "e0a8cbd54a6a341687fe44c01f1c938f",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la personne",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Détails de la personne",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Personne"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Personne non trouvée"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Personnes"
+                ],
+                "summary": "Mettre à jour une personne",
+                "operationId": "12bceb6a49b10be6fc7329efb78290f7",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la personne à mettre à jour",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Personne"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Personne mise à jour avec succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Personne"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Personne non trouvée"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Personnes"
+                ],
+                "summary": "Supprimer une personne",
+                "operationId": "2687ddb9d8cb54ea6137605c582db2de",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID de la personne à supprimer",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Personne supprimée avec succès"
+                    },
+                    "404": {
+                        "description": "Personne non trouvée"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Personne": {
+                "title": "Personne",
+                "description": "Modèle représentant une personne",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "nom": {
+                        "type": "string",
+                        "example": "Dupont"
+                    },
+                    "prenom": {
+                        "type": "string",
+                        "example": "Jean"
+                    },
+                    "ville": {
+                        "type": "string",
+                        "example": "Paris"
+                    },
+                    "telephone": {
+                        "type": "string",
+                        "example": "+33123456789"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Personnes",
+            "description": "Endpoints pour gérer les personnes"
+        }
+    ]
+}
