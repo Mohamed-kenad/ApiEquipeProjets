@@ -162,6 +162,163 @@
                     }
                 }
             }
+        },
+        "/api/projets": {
+            "get": {
+                "tags": [
+                    "Projets"
+                ],
+                "summary": "Récupérer tous les projets",
+                "operationId": "cdcc7d8fa82f1533384f69fd6bf52377",
+                "responses": {
+                    "200": {
+                        "description": "Liste des projets",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Projet"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Projets"
+                ],
+                "summary": "Créer un nouveau projet",
+                "operationId": "b09251428bbf1995144e555a6db447ae",
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Projet"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "Projet créé avec succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Projet"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/projets/{id}": {
+            "get": {
+                "tags": [
+                    "Projets"
+                ],
+                "summary": "Récupérer un projet par ID",
+                "operationId": "c12153e49ba7b2785975d94224588a62",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du projet",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Détails du projet",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Projet"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Projet non trouvé"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Projets"
+                ],
+                "summary": "Mettre à jour un projet",
+                "operationId": "f93c637a8568fe1980bc6bde69679dca",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du projet",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/Projet"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Projet mis à jour avec succès",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/Projet"
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Projet non trouvé"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Projets"
+                ],
+                "summary": "Supprimer un projet",
+                "operationId": "d880737fcbd65754b670b8e357c18c12",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID du projet",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Projet supprimé avec succès"
+                    },
+                    "404": {
+                        "description": "Projet non trouvé"
+                    }
+                }
+            }
         }
     },
     "components": {
@@ -192,6 +349,31 @@
                     }
                 },
                 "type": "object"
+            },
+            "Projet": {
+                "title": "Projet",
+                "description": "Model representing a project",
+                "properties": {
+                    "id": {
+                        "type": "integer",
+                        "example": 1
+                    },
+                    "status": {
+                        "type": "string",
+                        "example": "active"
+                    },
+                    "date_de_debut": {
+                        "type": "string",
+                        "format": "date",
+                        "example": "2025-02-25"
+                    },
+                    "date_de_fin": {
+                        "type": "string",
+                        "format": "date",
+                        "example": "2025-12-31"
+                    }
+                },
+                "type": "object"
             }
         }
     },
@@ -199,6 +381,10 @@
         {
             "name": "Personnes",
             "description": "Endpoints pour gérer les personnes"
+        },
+        {
+            "name": "Projets",
+            "description": "Operations related to projects"
         }
     ]
 }
