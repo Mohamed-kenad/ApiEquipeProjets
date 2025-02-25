@@ -192,34 +192,4 @@ class ProjetController extends Controller
     }
 
 
-
-    
-
-
-    
-    
-    
-    
-
-    public function termine_avec_retard(Projet $projet)
-    {
-        if ($projet->date_de_fin < now()) {
-            $projet->status = 'termine_avec_retard';
-        } else {
-            $projet->status = 'termine';
-        }
-        $projet->save();
-    }
-
-    public function retard_maximal(Projet $projet, $maxDelayInDays)
-    {
-        if ($projet->status == 'en retard') {
-            $maxDelay = $projet->date_de_fin->addDays($maxDelayInDays);
-
-            if (now() > $maxDelay) {
-                $projet->status = 'retard_maximal';
-                $projet->save();
-            }
-        }
-    }
 }
