@@ -18,7 +18,7 @@ class PersonneResource extends JsonResource
             "id"=>$this->id,
             "nom"=>$this->nom,
             "prenom"=>$this->prenom,
-            "telephoe"=>$this->telephone,
+            "telephone"=>$this->telephone,
             "ville"=>$this->ville
 
         ];

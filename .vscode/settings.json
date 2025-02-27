@@ -1,0 +1,9 @@
+{
+    "git.enabled": true,
+    "git.autorefresh": true,
+    "json.schemas": [
+        {
+            
+        }
+    ]
+}

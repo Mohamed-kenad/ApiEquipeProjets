@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Personne;
 use App\Http\Resources\PersonneResource;
+use Laravel\Pail\ValueObjects\Origin\Console;
 
 /**
  * @OA\Info(
@@ -21,6 +22,7 @@ use App\Http\Resources\PersonneResource;
   
  
  class PersonneController extends Controller 
+
  { 
      /** 
       * @OA\Get( 
@@ -41,6 +43,10 @@ use App\Http\Resources\PersonneResource;
      { 
          $personnes = Personne::all(); 
          return PersonneResource::collection($personnes); 
+
+         
+
+         
      } 
   
      /** 

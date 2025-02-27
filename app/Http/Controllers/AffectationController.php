@@ -33,6 +33,7 @@ class AffectationController extends Controller
         $projet->personnes()->detach($request->personnes);
 
         return response()->json(['message' => 'Personnes retirées du projet avec succès']);
+        
     }
 }
 

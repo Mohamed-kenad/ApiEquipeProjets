@@ -15,6 +15,8 @@ function App() {
 
   return (
     <>
+    <div className='container'>
+
     <table  className="table table-striped table-hover">
       <thead className='table-dark'>
         <tr>
@@ -39,6 +41,7 @@ function App() {
       </tbody>
     </table>
 
+            </div>
     </>
   )
 }

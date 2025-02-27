@@ -189,6 +189,9 @@ class ProjetController extends Controller
                         ->first();
 
         return response()->json($projet);
+        
+        
+        
     }
 
 
